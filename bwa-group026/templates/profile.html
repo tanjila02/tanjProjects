@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block title %}Userpage{% endblock %}
+{% block content %}
+
+	<div class="box">
+		<h1>Welcome to {{ user.username }}'s profile</h1>
+		<p>Name: {{user.name}}</p>
+		<p>Email: {{user.email}}</p>
+		<p>Address: {{user.address}}</p>
+		<p>Phone number: {{user.phone_number}}</p>
+
+		<form action='request/' method="get">
+ 			<input type="submit" class="btn" value="Send friend request" data-profileid={{user}} name='friend_request'>
+		</form>
+	</div>
+
+
+<!--
+	<div class="box">
+		<h1>Welcome, this is {{ request.path }}'s profile page'</h1>
+		<p>Name: {{user.name}}</p>
+		<button>Send Friend request</button>
+	</div>
+-->
+{% endblock %}

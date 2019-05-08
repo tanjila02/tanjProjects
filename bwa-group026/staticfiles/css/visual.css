@@ -1,0 +1,11 @@
+.box {
+	background-color: beige;
+	text-align: center;
+	margin: 20px 10px;
+	border-radius: 25px;
+	height: 300px;
+}
+
+body {
+	background: grey;
+}

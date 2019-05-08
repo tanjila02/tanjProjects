@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Update profile{% endblock %}
+
+{% block content %}
+<dic class=boxi>
+  <h2>Update profile</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update profile</button>
+    <input type="button" onclick="location.href='/login';" value="Cancel" />
+  </form>
+</div>
+{% endblock %}

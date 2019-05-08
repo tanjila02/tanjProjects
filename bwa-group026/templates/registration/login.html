@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  window.location.href = "users/"+user.username
+</script>
+
+
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+
+  <input type="button" onclick="location.href='/signup';" value="Signup" />
+</form>
+{% endblock %}

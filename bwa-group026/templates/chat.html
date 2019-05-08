@@ -1,0 +1,49 @@
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+{% load static %}
+<script src="{% static 'js/script.js'%}"></script>
+
+
+
+{% block content %}
+    <div class="container">
+        <div id="chat-body" class="panel panel-default">
+            <div class="panel-heading">Chat Box</div>
+            <div id="msg-list-div" class="panel-body">
+                <ul id="msg-list" class="list-group">
+                    {% for obj in chat %}
+                        {% if obj.user == request.user %}
+                            <li class="text-right list-group-item"> {{obj.user}}: {{ obj.message }}  [{{obj.created}}]</li>
+                        {% else %}
+                            <li class="text-left list-group-item">{{obj.user}}: {{ obj.message }} [{{obj.created}}]</li>
+                        {% endif %}
+                    {% empty %}
+                        <li class="text-right list-group-item">No messages yet!</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <form id="chat-form" method="post" action="{% url 'post' %}" data-spy="affix" data-offset-bottom="10">
+            {% csrf_token %}
+            <div id="chat-bottom" class="input-group">
+                <input type="text" id="chat-msg" name="chat-msg" class="form-control"/>
+                <span class="input-group-btn">
+                <input class="btn btn-default" id="send" type="submit" value="Send"/>
+            </span>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

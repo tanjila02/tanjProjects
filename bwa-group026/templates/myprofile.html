@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load accounts_extras%}
+{% block title %}Userpage{% endblock %}
+{% block content %}
+
+
+	<div class="box">
+		<h1>Welcome, {{ user.username }}</h1>
+		<h3>Here are your personal details:</h3>
+		<p>Name: {{user.name}}</p>
+		<p>Email: {{user.email}}</p>
+		<p>Address: {{user.address}}</p>
+		<p>Phone number: {{user.phone_number}}</p>
+		<input type="button" onclick="location.href='/users/edit/';" value="Edit" />
+	</div>
+<div class = "box">
+</div>
+
+<div class = "box">
+	<h3> Friends:</h3>
+	{% if Friends %}
+		{% for friend in Friends %}
+		<h5>{{friend.from_user}}</h5>
+		<button class="glyphicon glyphicon-remove" onclick="remove_friend(this, logged_user_js)" id="{{friend.from_user}}" >Remove</button>
+		{% endfor %}
+	{% else %}
+	<p>Oh no :( seems like you have no friends</p>
+
+	{% endif %}
+</div>
+
+
+  <div class = "box">
+		<h3> Friend Requests:</h3>
+    {% if FriendRequest %}
+      {% for friend in FriendRequest %}
+			<div>
+			<h5>From: {{friend.from_user}}</h5>
+
+				<button class="glyphicon glyphicon-thumbs-up" onclick="accept_friend(this, logged_user_js)" id="{{friend.from_user}}" >Accept</button>
+				<button class="glyphicon glyphicon-thumbs-down" onclick="decline_friend(this, logged_user_js)" id={{friend.from_user}}>Decline</button>
+			</div>
+      {% endfor %}
+
+    {% else %}
+    <p>Oh no :( seems like you have no friend requests</p>
+
+    {% endif %}
+  </div>
+
+{% comment %}  {% if friendships}
+	<div class="box">
+		{% for friend in friendships %}
+		<a href="/users/{{ friend.id }}">{{ friend.name }}</a>
+		{% endfor %}
+
+	</div>
+  {% else %}
+  <p>Oh no :( seems like you have no friends</p>
+  </div>
+  {% endif %}
+
+  <div>
+  	{% if conversations %}
+  	{% for conversation in conversations %}
+  		<a href="/conversations/{{Room.id }}">{{Room.id}}</a>
+  	{% endfor %}
+
+  	{% else %}
+  	<p>Oh no :( seems like you have no friends</p>
+
+  	{% endif %}
+  </div>
+
+
+
+  {% endcomment %}
+	{% endblock %}

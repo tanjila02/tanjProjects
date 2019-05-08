@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Users mainpage{% endblock %}
+
+{% block content %}
+
+<p> Here are the currently registered users:</p>
+{% for user in all_users %}
+<p>{{user}}</p>
+{%endfor%}
+{% endblock %}
