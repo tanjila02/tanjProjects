@@ -12,9 +12,9 @@ For instructions on what to add under these headers, see the course project assi
 
 ## Course project group information
 
-Lauri Suomela, 233508, lauri.a.suomela@student.tut.fi
-Jani Björklund, 252744, jani.bjorklund@student.tut.fi
-Tanjila Akther, 281811, tanjila.akther@student.tut.fi
+Lauri Suomela, lauri.a.suomela@student.tut.fi
+Jani Björklund, jani.bjorklund@student.tut.fi
+Tanjila Akther, tanjila.akther@student.tut.fi
 
 Group name: Undefined error
 
